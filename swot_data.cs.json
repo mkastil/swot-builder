@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Strategie růstu mobilní SaaS platformy",
+    "s": "Vlastní AI algoritmus pro personalizaci uživatelů\nVysoká míra retence a zapojení uživatelů\nAgilní vývojový tým s rychlým cyklem nasazování",
+    "w": "Nízké povědomí o značce na mezinárodních trzích\nVysoké provozní náklady na prémiovou cloudovou infrastrukturu\nAbsence integrace s vlastním hardwarem",
+    "o": "Rostoucí globální poptávka po digitálních zdravých řešeních\nPotenciální partnerství s výrobci chytrých zařízení (wearables)\nExpanze do B2B programů firemního wellness",
+    "t": "Přísná regulace ochrany osobních údajů (aktualizace GDPR)\nZvýšené náklady na marketing na hlavních platformách\nNástup levné konkurence financované agresivním kapitálem",
+    "id": 2026130400001,
+    "so": [
+      {
+        "text": "Využít náš vlastní AI algoritmus k vytvoření wellness datových balíčků na míru pro firemní B2B partnerství, a vytěžit tak rostoucí poptávku po digitálních zdravotních řešeních.",
+        "tags": [
+          {
+            "type": "S",
+            "text": "Vlastní AI algoritmus pro personalizaci uživatelů"
+          },
+          {
+            "type": "O",
+            "text": "Expanze do B2B programů firemního wellness"
+          }
+        ]
+      }
+    ],
+    "wo": [],
+    "st": [],
+    "wt": []
+  },
+  {
+    "title": "Budoucí strategický cíl A",
+    "s": "",
+    "w": "",
+    "o": "",
+    "t": "",
+    "id": 2026130400002
+  },
+  {
+    "title": "Budoucí strategický cíl B",
+    "s": "",
+    "w": "",
+    "o": "",
+    "t": "",
+    "id": 2026130400003
+  },
+  {
+    "title": "Prázdná šablona strategie",
+    "s": "",
+    "w": "",
+    "o": "",
+    "t": "",
+    "id": 2026130400004
+  }
+]

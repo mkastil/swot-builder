@@ -1,0 +1,52 @@
+[
+  {
+    "title": "Scaling Mobile SaaS Platform",
+    "s": "Proprietary AI algorithm for user personalization\nHigh user retention and engagement rates\nAgile development team with rapid deployment cycle",
+    "w": "Limited brand awareness in international markets\nHigh operational costs due to premium cloud infrastructure\nLack of physical hardware integration",
+    "o": "Rising global demand for digital wellness solutions\nPotential partnerships with smart device manufacturers\nExpansion into B2B corporate wellness programs",
+    "t": "Strict data privacy regulations (GDPR/CCPA updates)\nIncreased marketing costs on primary social platforms\nEmerging low-cost competitors from venture-backed startups",
+    "id": 2026130400001,
+    "so": [
+      {
+        "text": "Leverage our proprietary AI algorithm to create tailored wellness data packages for B2B corporate partnerships, capitalizing on the rising demand for digital health solutions.",
+        "tags": [
+          {
+            "type": "S",
+            "text": "Proprietary AI algorithm for user personalization"
+          },
+          {
+            "type": "O",
+            "text": "Expansion into B2B corporate wellness programs"
+          }
+        ]
+      }
+    ],
+    "wo": [],
+    "st": [],
+    "wt": []
+  },
+  {
+    "title": "Future Business Objective A",
+    "s": "",
+    "w": "",
+    "o": "",
+    "t": "",
+    "id": 2026130400002
+  },
+  {
+    "title": "Future Business Objective B",
+    "s": "",
+    "w": "",
+    "o": "",
+    "t": "",
+    "id": 2026130400003
+  },
+  {
+    "title": "Empty Strategic Template",
+    "s": "",
+    "w": "",
+    "o": "",
+    "t": "",
+    "id": 2026130400004
+  }
+]

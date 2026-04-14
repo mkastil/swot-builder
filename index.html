@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWOT Analýzy</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="translations.js"></script>
+</head>
+<body>
+
+    <header>
+        <h1 id="mainTitle" data-i18n="appTitle">SWOT dashboard</h1>
+        <div id="headerActions" style="display: flex; gap: 10px; align-items: center;">
+            <div class="lang-switch">
+                <button class="btn-lang" onclick="setLanguage('cs')" id="lang-cs">CS</button>
+                <button class="btn-lang" onclick="setLanguage('en')" id="lang-en">EN</button>
+            </div>
+            <button class="btn btn-outline" onclick="exportData()" data-i18n="exportBtn">Export (JSON)</button>
+            <button class="btn btn-outline" onclick="triggerImport()" data-i18n="importBtn">Import (JSON)</button>
+            <input type="file" id="importFile" style="display:none" accept=".json" onchange="importData(event)">
+        </div>
+    </header>
+
+    <div id="dashboard"></div>
+
+    <div id="editor">
+        <div class="editor-header">
+            <input type="text" id="swotTitle" data-i18n-placeholder="titlePlaceholder" placeholder="Název analýzy = Stanovený cíl...">
+            <button class="btn btn-outline" onclick="closeEditor()" data-i18n="cancel">Zrušit</button>
+            <button class="btn" onclick="saveSwot()" data-i18n="save">Uložit</button>
+        </div>
+
+        <div class="swot-matrix">
+            <div class="empty-corner"></div> 
+            <div class="hint-top" data-i18n="positive">Pozitivní</div>
+            <div class="hint-top" data-i18n="negative">Negativní</div>
+
+            <div class="hint-left">
+                <div class="hint-main" data-i18n="internal">Interní faktory</div>
+                <div class="hint-sub" data-i18n="internalSub">ve firmě</div>
+            </div>
+            
+            <!-- Strengths (S) -->
+            <div class="swot-box box-s">
+                <h2>
+                    <div class="title-text">
+                        <span><span data-i18n="strengths">Silné stránky</span> <small>(Strengths)</small></span>
+                        <button class="toggle-btn" onclick="toggleExpand(this)" data-i18n="expandBtn">⤢ Zobrazit vše</button>
+                    </div> 
+                    <span class="big-letter">S</span>
+                </h2>
+                <div class="swot-list-container" id="listS"></div>
+                <button class="add-item-btn" onclick="addListItem('listS')" data-i18n="addPoint">+ Přidat bod</button>
+            </div>
+            
+            <!-- Weaknesses (W) -->
+            <div class="swot-box box-w">
+                <h2>
+                    <div class="title-text">
+                        <span><span data-i18n="weaknesses">Slabé stránky</span> <small>(Weaknesses)</small></span>
+                        <button class="toggle-btn" onclick="toggleExpand(this)" data-i18n="expandBtn">⤢ Zobrazit vše</button>
+                    </div> 
+                    <span class="big-letter">W</span>
+                </h2>
+                <div class="swot-list-container" id="listW"></div>
+                <button class="add-item-btn" onclick="addListItem('listW')" data-i18n="addPoint">+ Přidat bod</button>
+            </div>
+
+            <div class="hint-left">
+                <div class="hint-main" data-i18n="external">Externí faktory</div>
+                <div class="hint-sub" data-i18n="externalSub">mimo firmu</div>
+            </div>
+            
+            <!-- Opportunities (O) -->
+            <div class="swot-box box-o">
+                <h2>
+                    <div class="title-text">
+                        <span><span data-i18n="opportunities">Příležitosti</span> <small>(Opportunities)</small></span>
+                        <button class="toggle-btn" onclick="toggleExpand(this)" data-i18n="expandBtn">⤢ Zobrazit vše</button>
+                    </div> 
+                    <span class="big-letter">O</span>
+                </h2>
+                <div class="swot-list-container" id="listO"></div>
+                <button class="add-item-btn" onclick="addListItem('listO')" data-i18n="addPoint">+ Přidat bod</button>
+            </div>
+            
+            <!-- Threats (T) -->
+            <div class="swot-box box-t">
+                <h2>
+                    <div class="title-text">
+                        <span><span data-i18n="threats">Hrozby</span> <small>(Threats)</small></span>
+                        <button class="toggle-btn" onclick="toggleExpand(this)" data-i18n="expandBtn">⤢ Zobrazit vše</button>
+                    </div> 
+                    <span class="big-letter">T</span>
+                </h2>
+                <div class="swot-list-container" id="listT"></div>
+                <button class="add-item-btn" onclick="addListItem('listT')" data-i18n="addPoint">+ Přidat bod</button>
+            </div>
+        </div>
+
+        <div class="strategies-section">
+            <h2 class="strategies-title" data-i18n="strategiesTitle">Návrh strategií ze SWOT analýzy (Drag & Drop)</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 0.9rem;" data-i18n="strategiesHint">Přetáhněte (uchopte a pusťte) položky z tabulky nahoře sem do jednotlivých strategií.</p>
+            <div class="strategies-matrix">
+                
+                <div class="strategy-box box-so" ondragover="allowDrop(event)" ondrop="dropNewStrategy(event, 'SO')">
+                    <h3><span data-i18n="soTitle">SO strategie</span> <small>(S + O)</small></h3>
+                    <p class="hint" data-i18n="soHint">Jak použít silné stránky k využití příležitostí?</p>
+                    <div class="strategy-list" id="listSO"></div>
+                    <button class="add-item-btn" onclick="addStrategyItem('listSO', [], '')" data-i18n="addStrategy">+ Přidat strategii</button>
+                </div>
+                
+                <div class="strategy-box box-wo" ondragover="allowDrop(event)" ondrop="dropNewStrategy(event, 'WO')">
+                    <h3><span data-i18n="woTitle">WO strategie</span> <small>(W + O)</small></h3>
+                    <p class="hint" data-i18n="woHint">Jak překonat slabé stránky, abychom využili příležitosti?</p>
+                    <div class="strategy-list" id="listWO"></div>
+                    <button class="add-item-btn" onclick="addStrategyItem('listWO', [], '')" data-i18n="addStrategy">+ Přidat strategii</button>
+                </div>
+                
+                <div class="strategy-box box-st" ondragover="allowDrop(event)" ondrop="dropNewStrategy(event, 'ST')">
+                    <h3><span data-i18n="stTitle">ST strategie</span> <small>(S + T)</small></h3>
+                    <p class="hint" data-i18n="stHint">Jak použít silné stránky k minimalizaci hrozeb?</p>
+                    <div class="strategy-list" id="listST"></div>
+                    <button class="add-item-btn" onclick="addStrategyItem('listST', [], '')" data-i18n="addStrategy">+ Přidat strategii</button>
+                </div>
+                
+                <div class="strategy-box box-wt" ondragover="allowDrop(event)" ondrop="dropNewStrategy(event, 'WT')">
+                    <h3><span data-i18n="wtTitle">WT strategie</span> <small>(W + T)</small></h3>
+                    <p class="hint" data-i18n="wtHint">Jak minimalizovat slabé stránky a vyhnout se hrozbám?</p>
+                    <div class="strategy-list" id="listWT"></div>
+                    <button class="add-item-btn" onclick="addStrategyItem('listWT', [], '')" data-i18n="addStrategy">+ Přidat strategii</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
