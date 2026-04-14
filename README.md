@@ -2,7 +2,7 @@
 
 A simple, interactive tool for performing SWOT analysis and deriving actionable strategies using Drag & Drop methodology.
 
-![SWOT Analysis Dashboard](https://via.placeholder.com/800x400.png?text=SWOT+Analysis+Tool+Screenshot)
+![SWOT Analysis Dashboard](screenshot.png)
 
 ## Features
 
